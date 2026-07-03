@@ -1,100 +1,90 @@
-<svg viewBox="0 0 1240 830" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
-  <title>Meridian system architecture</title>
-  <desc>Two acts — a scroll-driven Brief and a directed Console — over a sense, reason, act, verify agent loop fed by free data sources.</desc>
+<svg viewBox="0 0 1240 720" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" role="img">
+  <title>Meridian runtime architecture</title>
+  <desc>How Meridian actually runs: the intelligence is deterministic and executes in the browser; a thin Vercel server proxies free public data with seeded fallback; an optional client-side call goes directly to Gemini.</desc>
   <defs>
     <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8f9096"/></marker>
+    <marker id="ao" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 z" fill="#8f9096"/></marker>
   </defs>
+  <rect width="1240" height="720" fill="#fafafa"/>
 
-  <rect width="1240" height="830" fill="#fafafa"/>
+  <text x="40" y="48" fill="#171717" font-size="28" font-weight="600" font-family="Georgia, serif">Meridian — runtime architecture</text>
+  <text x="40" y="71" fill="#52525b" font-size="13">The intelligence runs in the browser · a thin server only proxies free data · the LLM is an optional direct call</text>
 
-  <!-- header -->
-  <text x="40" y="50" fill="#171717" font-size="30" font-weight="600" font-family="Georgia, 'Times New Roman', serif">Meridian</text>
-  <text x="40" y="74" fill="#52525b" font-size="13.5">National Energy Resilience Intelligence — system architecture</text>
-  <g transform="translate(1196,42)"><circle r="14" fill="none" stroke="#171717" stroke-width="1.1"/><ellipse rx="5.6" ry="14" fill="none" stroke="#0f62fe" stroke-width="1"/><line x1="-14" y1="0" x2="14" y2="0" stroke="#0f62fe" stroke-width="1"/><circle r="1.7" fill="#171717"/></g>
+  <!-- BAND A · BROWSER -->
+  <rect x="40" y="92" width="1160" height="212" rx="12" fill="#ffffff" stroke="#e9eaec"/>
+  <text x="60" y="118" fill="#0f62fe" font-size="12" font-weight="700" font-family="ui-monospace, monospace" letter-spacing="1">BROWSER</text>
+  <text x="132" y="118" fill="#8f9096" font-size="12">— the client does the thinking (deterministic, free, no server round-trip)</text>
+  <g font-size="12.5">
+    <g><rect x="60" y="134" width="255" height="150" rx="8" fill="#f5f6f8" stroke="#e9eaec"/>
+      <text x="76" y="160" fill="#171717" font-weight="600">/ Landing</text>
+      <text x="76" y="182" fill="#52525b" font-size="11.5">COBE globe (WebGL)</text>
+      <text x="76" y="200" fill="#52525b" font-size="11.5">GSAP ScrollTrigger + Lenis</text>
+      <text x="76" y="218" fill="#52525b" font-size="11.5">counting stats · shock scene</text>
+      <text x="76" y="256" fill="#8f9096" font-size="10.5">→ "Enter the console"</text></g>
 
-  <!-- two acts -->
-  <g font-family="ui-monospace, monospace">
-    <rect x="40" y="100" width="556" height="76" rx="10" fill="#ffffff" stroke="#e9eaec"/>
-    <text x="58" y="126" fill="#0f62fe" font-size="12" font-weight="600" letter-spacing="1">ACT I — THE BRIEF · /</text>
-    <text x="58" y="150" fill="#52525b" font-size="12.5" font-family="Inter, sans-serif">COBE globe · GSAP ScrollTrigger + Lenis · counting stats</text>
-    <text x="58" y="168" fill="#52525b" font-size="12.5" font-family="Inter, sans-serif">the 2025 Brent shock, animated → “Enter the console”</text>
+    <g><rect x="332" y="134" width="255" height="150" rx="8" fill="#f5f6f8" stroke="#e9eaec"/>
+      <text x="348" y="160" fill="#171717" font-weight="600">/console</text>
+      <text x="348" y="182" fill="#52525b" font-size="11.5">deck.gl + MapLibre twin</text>
+      <text x="348" y="200" fill="#52525b" font-size="11.5">directed camera · ripple · arcs</text>
+      <text x="348" y="218" fill="#52525b" font-size="11.5">docks · ⌘K · light / dark</text>
+      <text x="348" y="256" fill="#8f9096" font-size="10.5">renders store state @ 60fps</text></g>
 
-    <line x1="600" y1="138" x2="636" y2="138" stroke="#8f9096" marker-end="url(#a)"/>
+    <g><rect x="604" y="134" width="255" height="150" rx="8" fill="#f5f6f8" stroke="#e9eaec"/>
+      <text x="620" y="160" fill="#171717" font-weight="600">Zustand store</text>
+      <text x="620" y="182" fill="#52525b" font-size="11.5">director (camera cues, ripple)</text>
+      <text x="620" y="200" fill="#52525b" font-size="11.5">theme · approvals · live data</text>
+      <text x="620" y="218" fill="#52525b" font-size="11.5">single source of truth</text></g>
 
-    <rect x="644" y="100" width="556" height="76" rx="10" fill="#ffffff" stroke="#e9eaec"/>
-    <text x="662" y="126" fill="#1e3a5f" font-size="12" font-weight="600" letter-spacing="1">ACT II — THE CONSOLE · /console</text>
-    <text x="662" y="150" fill="#52525b" font-size="12.5" font-family="Inter, sans-serif">deck.gl + MapLibre digital twin · directed camera</text>
-    <text x="662" y="168" fill="#52525b" font-size="12.5" font-family="Inter, sans-serif">⌘K palette · collapsible docks · light / dark</text>
+    <g><rect x="876" y="134" width="264" height="150" rx="8" fill="#0f62fe" fill-opacity="0.06" stroke="#0f62fe" stroke-opacity="0.45"/>
+      <text x="892" y="160" fill="#0f62fe" font-weight="700">Deterministic engine ★</text>
+      <text x="892" y="182" fill="#52525b" font-size="11.5">sense → reason → act → verify</text>
+      <text x="892" y="200" fill="#52525b" font-size="11.5">transparent cascade model</text>
+      <text x="892" y="218" fill="#52525b" font-size="11.5">ranked + verified reroutes</text>
+      <text x="892" y="256" fill="#14754c" font-size="10.5" font-weight="600">runs 100% in-browser · free</text></g>
   </g>
 
-  <!-- data sources -->
-  <text x="40" y="212" fill="#8f9096" font-size="11" font-family="ui-monospace, monospace" letter-spacing="1">FREE DATA SOURCES · no paid vendors</text>
+  <!-- arrow browser <-> vercel -->
+  <line x1="220" y1="304" x2="220" y2="356" stroke="#8f9096" marker-end="url(#a)" marker-start="url(#ao)"/>
+  <text x="234" y="334" fill="#52525b" font-size="11" font-family="ui-monospace, monospace">fetch /api/data/*</text>
+
+  <!-- BAND B · VERCEL -->
+  <rect x="40" y="356" width="1160" height="98" rx="12" fill="#ffffff" stroke="#e9eaec"/>
+  <text x="60" y="382" fill="#1e3a5f" font-size="12" font-weight="700" font-family="ui-monospace, monospace" letter-spacing="1">VERCEL</text>
+  <text x="120" y="382" fill="#8f9096" font-size="12">— Next.js server · a thin data proxy (each route falls back to seeded on failure)</text>
+  <g font-size="11.5" fill="#52525b" font-family="ui-monospace, monospace">
+    <g><rect x="60" y="398" width="255" height="38" rx="7" fill="#f5f6f8" stroke="#e9eaec"/><text x="187" y="422" text-anchor="middle">/api/data/prices</text></g>
+    <g><rect x="332" y="398" width="255" height="38" rx="7" fill="#f5f6f8" stroke="#e9eaec"/><text x="459" y="422" text-anchor="middle">/api/data/news</text></g>
+    <g><rect x="604" y="398" width="255" height="38" rx="7" fill="#f5f6f8" stroke="#e9eaec"/><text x="731" y="422" text-anchor="middle">/api/data/vessels</text></g>
+    <g><rect x="876" y="398" width="264" height="38" rx="7" fill="#f5f6f8" stroke="#e9eaec"/><text x="1008" y="422" text-anchor="middle">/api/data/sanctions</text></g>
+  </g>
+
+  <!-- arrow vercel <-> external -->
+  <line x1="220" y1="454" x2="220" y2="506" stroke="#8f9096" marker-end="url(#a)" marker-start="url(#ao)"/>
+  <text x="234" y="484" fill="#52525b" font-size="11" font-family="ui-monospace, monospace">server-side fetch</text>
+
+  <!-- BAND C · EXTERNAL -->
+  <rect x="40" y="506" width="1160" height="96" rx="12" fill="#f5f6f8" stroke="#e9eaec"/>
+  <text x="60" y="532" fill="#14754c" font-size="12" font-weight="700" font-family="ui-monospace, monospace" letter-spacing="1">FREE EXTERNAL SERVICES</text>
+  <text x="300" y="532" fill="#8f9096" font-size="12">— no paid vendors</text>
   <g font-size="11.5" fill="#52525b" font-family="Inter, sans-serif">
-    <g><rect x="40" y="222" width="176" height="30" rx="6" fill="#fff" stroke="#e9eaec"/><text x="128" y="242" text-anchor="middle">GDELT · news</text></g>
-    <g><rect x="228" y="222" width="176" height="30" rx="6" fill="#fff" stroke="#e9eaec"/><text x="316" y="242" text-anchor="middle">AISStream · vessels</text></g>
-    <g><rect x="416" y="222" width="150" height="30" rx="6" fill="#fff" stroke="#e9eaec"/><text x="491" y="242" text-anchor="middle">EIA · Brent/WTI</text></g>
-    <g><rect x="578" y="222" width="150" height="30" rx="6" fill="#fff" stroke="#e9eaec"/><text x="653" y="242" text-anchor="middle">OFAC · sanctions</text></g>
-    <g><rect x="740" y="222" width="170" height="30" rx="6" fill="#fff" stroke="#e9eaec"/><text x="825" y="242" text-anchor="middle">PPAC · refineries</text></g>
-    <g><rect x="922" y="222" width="150" height="30" rx="6" fill="#fff" stroke="#e9eaec"/><text x="997" y="242" text-anchor="middle">CARTO · basemap</text></g>
-  </g>
-  <line x1="556" y1="260" x2="170" y2="300" stroke="#8f9096" stroke-opacity="0.6" marker-end="url(#a)"/>
-
-  <!-- engine: four stages -->
-  <g font-family="Inter, sans-serif">
-    <!-- SENSE -->
-    <rect x="40" y="264" width="260" height="30" rx="6" fill="#0f62fe" fill-opacity="0.08" stroke="#0f62fe" stroke-opacity="0.4"/>
-    <text x="56" y="284" fill="#0f62fe" font-size="12.5" font-weight="700" font-family="ui-monospace, monospace" letter-spacing="1">1 · SENSE</text>
-    <g font-size="12.5" fill="#171717">
-      <g><rect x="40" y="304" width="260" height="52" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="58" cy="322" r="3" fill="#0f62fe"/><text x="72" y="326" font-weight="600">Geopolitical</text><text x="72" y="343" font-size="10.5" fill="#8f9096">structured risk events</text></g>
-      <g><rect x="40" y="366" width="260" height="52" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="58" cy="384" r="3" fill="#0f62fe"/><text x="72" y="388" font-weight="600">Maritime</text><text x="72" y="405" font-size="10.5" fill="#8f9096">tanker / chokepoint anomalies</text></g>
-      <g><rect x="40" y="428" width="260" height="52" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="58" cy="446" r="3" fill="#0f62fe"/><text x="72" y="450" font-weight="600">Market</text><text x="72" y="467" font-size="10.5" fill="#8f9096">price + spread spikes</text></g>
-      <g><rect x="40" y="490" width="260" height="52" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="58" cy="508" r="3" fill="#0f62fe"/><text x="72" y="512" font-weight="600">Sanctions</text><text x="72" y="529" font-size="10.5" fill="#8f9096">OFAC SDN screening</text></g>
-    </g>
-
-    <!-- REASON -->
-    <rect x="340" y="264" width="260" height="30" rx="6" fill="#1e3a5f" fill-opacity="0.08" stroke="#1e3a5f" stroke-opacity="0.4"/>
-    <text x="356" y="284" fill="#1e3a5f" font-size="12.5" font-weight="700" font-family="ui-monospace, monospace" letter-spacing="1">2 · REASON</text>
-    <g font-size="12.5" fill="#171717">
-      <g><rect x="340" y="304" width="260" height="83" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="358" cy="324" r="3" fill="#1e3a5f"/><text x="372" y="328" font-weight="600">Risk Fusion</text><text x="356" y="350" font-size="10.5" fill="#8f9096">multi-agent debate →</text><text x="356" y="367" font-size="10.5" fill="#8f9096">calibrated disruption prob.</text></g>
-      <g><rect x="340" y="397" width="260" height="83" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="358" cy="417" r="3" fill="#1e3a5f"/><text x="372" y="421" font-weight="600">Scenario Twin</text><text x="356" y="443" font-size="10.5" fill="#8f9096">transparent causal cascade</text><text x="356" y="460" font-size="10.5" fill="#8f9096">price→refinery→pump→GDP</text></g>
-    </g>
-
-    <!-- ACT -->
-    <rect x="640" y="264" width="260" height="30" rx="6" fill="#14754c" fill-opacity="0.08" stroke="#14754c" stroke-opacity="0.4"/>
-    <text x="656" y="284" fill="#14754c" font-size="12.5" font-weight="700" font-family="ui-monospace, monospace" letter-spacing="1">3 · ACT</text>
-    <g font-size="12.5" fill="#171717">
-      <g><rect x="640" y="304" width="260" height="83" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="658" cy="324" r="3" fill="#14754c"/><text x="672" y="328" font-weight="600">Procurement Orchestrator</text><text x="656" y="350" font-size="10.5" fill="#8f9096">rank alternative corridors</text><text x="656" y="367" font-size="10.5" fill="#8f9096">price · lead-time · grade fit</text></g>
-      <g><rect x="640" y="397" width="260" height="83" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="658" cy="417" r="3" fill="#14754c"/><text x="672" y="421" font-weight="600">Reserve Optimiser</text><text x="656" y="443" font-size="10.5" fill="#8f9096">SPR drawdown schedule</text><text x="656" y="460" font-size="10.5" fill="#8f9096">to plug the import gap</text></g>
-    </g>
-
-    <!-- VERIFY -->
-    <rect x="940" y="264" width="260" height="30" rx="6" fill="#935610" fill-opacity="0.08" stroke="#935610" stroke-opacity="0.4"/>
-    <text x="956" y="284" fill="#935610" font-size="12.5" font-weight="700" font-family="ui-monospace, monospace" letter-spacing="1">4 · VERIFY</text>
-    <g font-size="12.5" fill="#171717">
-      <g><rect x="940" y="304" width="260" height="68" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="958" cy="324" r="3" fill="#935610"/><text x="972" y="328" font-weight="600">Compliance</text><text x="956" y="350" font-size="10.5" fill="#8f9096">sanctions / price-cap audit</text></g>
-      <g><rect x="940" y="380" width="260" height="60" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="958" cy="400" r="3" fill="#935610"/><text x="972" y="404" font-weight="600">Logistics</text><text x="956" y="424" font-size="10.5" fill="#8f9096">port capacity / transit</text></g>
-      <g><rect x="940" y="448" width="260" height="60" rx="7" fill="#fff" stroke="#e9eaec"/><circle cx="958" cy="468" r="3" fill="#935610"/><text x="972" y="472" font-weight="600">Finance</text><text x="956" y="492" font-size="10.5" fill="#8f9096">margin / hedge budget</text></g>
-    </g>
-
-    <g stroke="#8f9096">
-      <line x1="302" y1="384" x2="338" y2="384" marker-end="url(#a)"/>
-      <line x1="602" y1="384" x2="638" y2="384" marker-end="url(#a)"/>
-      <line x1="902" y1="384" x2="938" y2="384" marker-end="url(#a)"/>
-    </g>
+    <g><rect x="60" y="548" width="118" height="34" rx="7" fill="#fff" stroke="#e9eaec"/><text x="119" y="570" text-anchor="middle">EIA · prices</text></g>
+    <g><rect x="188" y="548" width="118" height="34" rx="7" fill="#fff" stroke="#e9eaec"/><text x="247" y="570" text-anchor="middle">GDELT · news</text></g>
+    <g><rect x="316" y="548" width="120" height="34" rx="7" fill="#fff" stroke="#e9eaec"/><text x="376" y="570" text-anchor="middle">OFAC · sanctions</text></g>
+    <g><rect x="446" y="548" width="120" height="34" rx="7" fill="#fff" stroke="#e9eaec"/><text x="506" y="570" text-anchor="middle">AISStream · AIS</text></g>
+    <g><rect x="576" y="548" width="130" height="34" rx="7" fill="#fff" stroke="#e9eaec"/><text x="641" y="570" text-anchor="middle">PPAC · refineries</text></g>
+    <g><rect x="716" y="548" width="120" height="34" rx="7" fill="#fff" stroke="#e9eaec"/><text x="776" y="570" text-anchor="middle">CARTO · tiles</text></g>
+    <g><rect x="980" y="548" width="160" height="34" rx="7" fill="#fff" stroke="#935610" stroke-opacity="0.4"/><text x="1060" y="570" text-anchor="middle" fill="#935610" font-weight="600">Google Gemini</text></g>
   </g>
 
-  <!-- output -->
-  <line x1="620" y1="556" x2="620" y2="588" stroke="#8f9096" marker-end="url(#a)"/>
-  <rect x="40" y="588" width="1160" height="72" rx="10" fill="#ffffff" stroke="#0f62fe" stroke-opacity="0.3"/>
-  <text x="60" y="614" fill="#8f9096" font-size="11" font-family="ui-monospace, monospace" letter-spacing="1">DECISION OUTPUT</text>
-  <text x="60" y="638" fill="#171717" font-size="14" font-weight="600" font-family="Inter, sans-serif">3 verified reroutes · cascade impact · national risk index — executable, auditable</text>
-  <text x="60" y="654" fill="#52525b" font-size="11.5" font-family="Inter, sans-serif">rendered live on the deck.gl digital twin (Act II) · narrated by the scroll story (Act I) · “Approve” commits the cargo</text>
+  <!-- direct browser -> Gemini (client-side, dashed, bypasses server) -->
+  <path d="M1060 284 C1170 320, 1180 460, 1100 546" fill="none" stroke="#935610" stroke-opacity="0.6" stroke-width="1.4" stroke-dasharray="5 5" marker-end="url(#a)"/>
+  <rect x="1120" y="392" width="98" height="46" rx="7" fill="#fff" stroke="#935610" stroke-opacity="0.3"/>
+  <text x="1169" y="410" text-anchor="middle" fill="#935610" font-size="10" font-family="ui-monospace, monospace">opt-in ·</text>
+  <text x="1169" y="424" text-anchor="middle" fill="#935610" font-size="10" font-family="ui-monospace, monospace">your key ·</text>
+  <text x="1169" y="437" text-anchor="middle" fill="#935610" font-size="9.5" font-family="ui-monospace, monospace">never server</text>
 
   <!-- footer -->
-  <rect x="40" y="676" width="1160" height="118" rx="10" fill="#f5f6f8" stroke="#e9eaec"/>
-  <text x="60" y="702" fill="#8f9096" font-size="11" font-family="ui-monospace, monospace" letter-spacing="1">STACK</text>
-  <text x="60" y="724" fill="#52525b" font-size="12.5" font-family="Inter, sans-serif">Next.js 16 · React 19 · TypeScript · Tailwind v4 · deck.gl + MapLibre · COBE · GSAP + Lenis · Framer Motion · cmdk · sonner · NumberFlow · Zustand</text>
-  <text x="60" y="746" fill="#52525b" font-size="12.5" font-family="Inter, sans-serif">Fonts: Fraunces (display) · Inter (UI) · Geist Mono (data)</text>
-  <line x1="60" y1="758" x2="1180" y2="758" stroke="#e9eaec"/>
-  <text x="60" y="779" fill="#171717" font-size="12.5" font-family="Inter, sans-serif">Deterministic core ships <tspan fill="#14754c" font-weight="600">free</tspan> (no keys) · opt-in LLM synthesis via a <tspan fill="#14754c" font-weight="600">free Gemini</tspan> key (or Claude) · every data source is <tspan fill="#14754c" font-weight="600">free</tspan> · seeded-safe, live-capable.</text>
+  <text x="40" y="636" fill="#171717" font-size="12.5">The core intelligence is <tspan fill="#0f62fe" font-weight="600">deterministic and runs entirely in the browser</tspan> — free, instant, works offline on seeded data.</text>
+  <text x="40" y="656" fill="#52525b" font-size="12">The server only proxies <tspan fill="#14754c" font-weight="600">free public data</tspan> (seeded-safe on failure). The LLM brief is an <tspan fill="#935610" font-weight="600">optional direct browser→Gemini call</tspan> with your own key.</text>
+  <text x="40" y="684" fill="#8f9096" font-size="11" font-family="ui-monospace, monospace">Next.js 16 · React 19 · deck.gl + MapLibre · COBE · GSAP + Lenis · Zustand · Tailwind v4 · deployed on Vercel</text>
 </svg>
