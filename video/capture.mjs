@@ -66,7 +66,7 @@ try {
   // ── Act I: the landing story ──────────────────────────────────────────────
   await page.goto(BASE, { waitUntil: "networkidle" });
   mark("landing loaded (globe hold)");
-  await sleep(3500); // hold on the globe
+  await sleep(5000); // hold on the globe — breathing room for the narration's opening beat
   mark("scroll story begins");
   for (let i = 0; i < 5; i++) { await page.mouse.wheel(0, 900); await sleep(1900); } // scroll the story
 
@@ -82,12 +82,12 @@ try {
   // wait for the directed run to finish
   await page.waitForFunction(() => /cleared|Verified crude reroutes/i.test(document.body.innerText), null, { timeout: 45000 }).catch(() => {});
   mark("run finished — verified reroutes staged");
-  await sleep(3000);
+  await sleep(5000); // hold on the staged reroutes — the verification beat
 
   // approve the top reroute (closes the loop)
   mark("clicking Approve & route");
   await glideClick(page, page.getByRole("button", { name: /approve & route/i }).first());
-  await sleep(4000);
+  await sleep(9000); // long tail — closing narration + outro card land here
   mark("capture end");
 } catch (e) {
   console.error("capture error:", e?.message);

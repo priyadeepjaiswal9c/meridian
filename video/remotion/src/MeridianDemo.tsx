@@ -15,6 +15,8 @@ import { captions } from "./captions";
 export type DemoProps = {
   durationInSeconds: number;
   withVoiceover: boolean;
+  /** Seconds to trim from the start of capture.webm (pre-paint blank lead). */
+  trimSeconds?: number;
 };
 
 const SERIF = "Georgia, 'Times New Roman', serif";
@@ -75,15 +77,16 @@ const Card: React.FC<{ big: React.ReactNode; sub?: string; fadeOut?: boolean }> 
   );
 };
 
-export const MeridianDemo: React.FC<DemoProps> = ({ withVoiceover }) => {
+export const MeridianDemo: React.FC<DemoProps> = ({ withVoiceover, trimSeconds = 0 }) => {
   const { fps, durationInFrames } = useVideoConfig();
 
   return (
     <AbsoluteFill style={{ backgroundColor: INK }}>
-      {/* the screen-capture, full frame */}
+      {/* the screen-capture, full frame (blank pre-paint lead trimmed) */}
       <OffthreadVideo
         src={staticFile("capture.webm")}
         muted
+        startFrom={Math.round(trimSeconds * fps)}
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />
 
