@@ -1,4 +1,5 @@
 {
-  "durationInSeconds": 45,
-  "withVoiceover": false
+  "durationInSeconds": 46.5,
+  "withVoiceover": true,
+  "trimSeconds": 3.8
 }

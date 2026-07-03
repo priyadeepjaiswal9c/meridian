@@ -52,3 +52,6 @@ video/remotion/public/vo.wav
 
 # graphify code knowledge-graph output (generated)
 /graphify-out/
+
+# final submission deliverables (uploaded to Unstop, not repo material)
+/submission/
