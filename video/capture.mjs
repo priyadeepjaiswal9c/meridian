@@ -13,6 +13,11 @@ import { chromium } from "playwright";
 const BASE = process.env.BASE_URL || "http://localhost:3000";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Milestone timer — prints elapsed seconds at each beat so captions.ts fromSec
+// and props.json durationInSeconds can be set from real measurements.
+const t0 = Date.now();
+const mark = (label) => console.log(`  ⏱ ${((Date.now() - t0) / 1000).toFixed(1)}s  ${label}`);
+
 // Inject a smooth fake cursor + click pulse (headed capture doesn't record the OS cursor well).
 async function installCursor(page) {
   await page.addInitScript(() => {
@@ -60,22 +65,30 @@ await installCursor(page);
 try {
   // ── Act I: the landing story ──────────────────────────────────────────────
   await page.goto(BASE, { waitUntil: "networkidle" });
+  mark("landing loaded (globe hold)");
   await sleep(3500); // hold on the globe
+  mark("scroll story begins");
   for (let i = 0; i < 5; i++) { await page.mouse.wheel(0, 900); await sleep(1900); } // scroll the story
 
   // ── Act II: into the console ──────────────────────────────────────────────
+  mark("clicking Enter the console");
   await glideClick(page, page.getByRole("link", { name: /enter the console/i }));
   await page.waitForTimeout(6000); // map + globe settle
+  mark("console settled");
 
   // fire the crisis
   await glideClick(page, page.getByRole("button", { name: /simulate crisis/i }));
+  mark("Simulate crisis clicked");
   // wait for the directed run to finish
   await page.waitForFunction(() => /cleared|Verified crude reroutes/i.test(document.body.innerText), null, { timeout: 45000 }).catch(() => {});
+  mark("run finished — verified reroutes staged");
   await sleep(3000);
 
   // approve the top reroute (closes the loop)
+  mark("clicking Approve & route");
   await glideClick(page, page.getByRole("button", { name: /approve & route/i }).first());
   await sleep(4000);
+  mark("capture end");
 } catch (e) {
   console.error("capture error:", e?.message);
 } finally {
@@ -84,11 +97,9 @@ try {
   const dest = "video/remotion/public/capture.webm";
   try {
     await video?.saveAs(dest);
-    const seconds = null; // Playwright doesn't report duration; read it from the file if needed
-    console.log(`\n✓ saved → ${dest}`);
+    console.log(`\n✓ saved → ${dest}   (total ≈ ${((Date.now() - t0) / 1000).toFixed(1)}s — use the ⏱ marks above to time captions)`);
     console.log("  Next: set \"durationInSeconds\" in video/remotion/props.json to this clip's length,");
     console.log("        then:  cd video/remotion && npm i && npm run render");
-    void seconds;
   } catch {
     console.log("video is under video/out/ — copy it to", dest);
   }
