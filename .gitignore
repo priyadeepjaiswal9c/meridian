@@ -42,3 +42,9 @@ next-env.d.ts
 
 # demo capture output
 video/out/
+
+# remotion video project
+video/remotion/node_modules/
+video/remotion/out/
+video/remotion/public/capture.webm
+video/remotion/public/vo.wav
