@@ -171,7 +171,7 @@ export const useMeridian = create<MeridianStore>((set, get) => ({
     if (typeof document !== "undefined") {
       set({ theme: document.documentElement.classList.contains("dark") ? "dark" : "light" });
       try {
-        const k = localStorage.getItem("meridian-gemini-key");
+        const k = localStorage.getItem("meridian-gemini-key") || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
         if (k) set({ geminiKey: k, aiEnabled: true });
       } catch {}
     }

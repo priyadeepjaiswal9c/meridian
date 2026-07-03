@@ -29,7 +29,13 @@ export async function geminiSynthesize(
         headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
         body: JSON.stringify({
           contents: [{ role: "user", parts: [{ text: prompt(situation) }] }],
-          generationConfig: { temperature: 0.3, maxOutputTokens: 90 },
+          // thinkingBudget:0 — 2.5-flash otherwise spends the whole output budget on hidden
+          // reasoning and returns empty text for a short brief.
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 120,
+            thinkingConfig: { thinkingBudget: 0 },
+          },
         }),
       },
     );
