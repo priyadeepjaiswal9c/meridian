@@ -84,7 +84,9 @@ src/
 ```
 
 Deliverables: this app · pitch deck (`public/pitch.html` → `/pitch.html`, print-to-PDF) ·
-architecture diagram (`docs/architecture.svg`).
+runtime architecture diagram ([`docs/architecture.svg`](docs/architecture.svg), also served live at
+[`/architecture.svg`](https://meridian-five-phi.vercel.app/architecture.svg) and included as slide 9
+of the deck).
 
 > **Integrity note:** chokepoint closures are presented as *simulated scenarios*, not claims about
 > live real-world events. The cascade's assumptions are shown on screen for audit.
