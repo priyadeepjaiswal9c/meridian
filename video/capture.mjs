@@ -79,8 +79,18 @@ try {
 } catch (e) {
   console.error("capture error:", e?.message);
 } finally {
+  const video = page.video();
   await context.close(); // flushes the webm
-  const file = await page.video()?.path().catch(() => null);
+  const dest = "video/remotion/public/capture.webm";
+  try {
+    await video?.saveAs(dest);
+    const seconds = null; // Playwright doesn't report duration; read it from the file if needed
+    console.log(`\n✓ saved → ${dest}`);
+    console.log("  Next: set \"durationInSeconds\" in video/remotion/props.json to this clip's length,");
+    console.log("        then:  cd video/remotion && npm i && npm run render");
+    void seconds;
+  } catch {
+    console.log("video is under video/out/ — copy it to", dest);
+  }
   await browser.close();
-  console.log("done →", file || "video/out/*.webm");
 }
