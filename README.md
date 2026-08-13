@@ -96,6 +96,5 @@ of the deck).
 | Contributor | Role |
 |---|---|
 | [**Priyadeep Jaiswal**](https://github.com/priyadeepjaiswal9c) | Owner; product concept, research, system design, implementation, and presentation |
-| **Claude (Anthropic)** | AI-assisted development support and optional runtime synthesis provider |
 
 Priyadeep designed the decision model, integrated the data and interface, verified the scenarios, and owns the resulting work.
