@@ -91,8 +91,11 @@ of the deck).
 > **Integrity note:** chokepoint closures are presented as *simulated scenarios*, not claims about
 > live real-world events. The cascade's assumptions are shown on screen for audit.
 
-## Author and acknowledgements
+## Contributors
 
-**Priyadeep Jaiswal** — product concept, research, system design, implementation, and presentation · [@priyadeepjaiswal9c](https://github.com/priyadeepjaiswal9c)
+| Contributor | Role |
+|---|---|
+| [**Priyadeep Jaiswal**](https://github.com/priyadeepjaiswal9c) | Owner; product concept, research, system design, implementation, and presentation |
+| **Claude (Anthropic)** | AI-assisted development support and optional runtime synthesis provider |
 
-Claude was used as an AI development assistant during parts of the build and is also available as an optional runtime synthesis provider. Priyadeep designed the decision model, integrated the data and interface, verified the scenarios, and owns the resulting work.
+Priyadeep designed the decision model, integrated the data and interface, verified the scenarios, and owns the resulting work.
