@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import * as Slider from "@radix-ui/react-slider";
 import { Anchor, Flame, Play, RotateCcw, Ship } from "lucide-react";
 import { useMeridian } from "@/lib/store";
@@ -17,10 +16,11 @@ const OPTIONS: { kind: Exclude<ScenarioKind, "baseline" | "custom">; label: stri
 
 export function ScenarioConsole() {
   const { intensity, setIntensity, run, reset, running, hasRun } = useMeridian();
-  const [kind, setKind] = useState<Exclude<ScenarioKind, "baseline" | "custom">>("hormuz");
+  const kind = useMeridian((s) => s.selectedScenarioKind);
+  const setKind = useMeridian((s) => s.setSelectedScenarioKind);
 
   return (
-    <Dock eyebrow="Scenario console" title="Stress-test the supply network">
+    <Dock tourId="scenario" eyebrow="Scenario console" title="Stress-test the supply network">
       <div className="space-y-4 p-4">
         <div className="grid grid-cols-3 gap-2">
           {OPTIONS.map((o) => {

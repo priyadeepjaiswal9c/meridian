@@ -100,11 +100,11 @@ function Card({ rec, i }: { rec: Recommendation; i: number }) {
       >
         {approved ? (
           <>
-            <CheckCheck size={13} /> Routed · {rec.volumeMbbl} mbbl committed
+            <CheckCheck size={13} /> Approved in demo · {rec.volumeMbbl} mbbl
           </>
         ) : (
           <>
-            Approve & route {rec.volumeMbbl} mbbl <ArrowRight size={12} />
+            Simulate approval · {rec.volumeMbbl} mbbl <ArrowRight size={12} />
           </>
         )}
       </button>
@@ -117,15 +117,15 @@ export function RecommendationPanel() {
   if (!hasRun || recommendations.length === 0) return null;
 
   return (
-    <Dock
+    <Dock tourId="routes"
       eyebrow="Adaptive procurement"
-      title="Verified crude reroutes — ready to execute"
+      title="Suggested reroutes · simulation"
       right={
         <span className="flex items-center gap-2.5">
           {runDurationMs != null && (
             <span
               className="num flex items-center gap-1 rounded-full border border-signal/30 bg-signal-soft px-2 py-0.5 text-[10.5px] font-semibold text-signal"
-              title="End-to-end response time — first signal to verified, executable plan"
+              title="Time to run this simulation and display its plan"
             >
               <Timer size={10.5} strokeWidth={2.4} />
               signal → plan {(runDurationMs / 1000).toFixed(1)}s

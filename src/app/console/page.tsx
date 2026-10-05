@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Command as CommandIcon, Radio } from "lucide-react";
 import { Toaster } from "sonner";
 import { useMeridian } from "@/lib/store";
+import { Tutorial } from "@/components/console/Tutorial";
 import { TopBar } from "@/components/shell/TopBar";
 import { RiskFeed } from "@/components/panels/RiskFeed";
 import { AgentTrace } from "@/components/panels/AgentTrace";
@@ -83,6 +84,7 @@ function DirectingChip() {
 }
 
 export default function Console() {
+  const tutorialOpen = useMeridian((s) => s.tutorialOpen);
   const panelsHidden = useMeridian((s) => s.panelsHidden);
 
   useEffect(() => {
@@ -104,6 +106,7 @@ export default function Console() {
     s.hydrateLive();
     // Shareable auto-run for recorded demos: /console?run=hormuz&i=70
     const p = new URLSearchParams(window.location.search);
+    if (p.get("tutorial") === "1") s.setTutorialOpen(true);
     const run = p.get("run");
     if (run && ["hormuz", "redsea", "opec"].includes(run)) {
       const intensity = Number(p.get("i")) || 60;
@@ -138,8 +141,7 @@ export default function Console() {
                 transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
                 className="pointer-events-none absolute bottom-3 left-3 top-3 flex w-[330px] flex-col gap-3"
               >
-                <RiskFeed />
-                <AgentTrace />
+                {tutorialOpen ? <Tutorial /> : <><RiskFeed /><AgentTrace /></>}
               </motion.div>
             )}
           </AnimatePresence>

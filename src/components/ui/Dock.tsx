@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
  *  · enlargeable (⤢) — opens the same content in a large centered dialog
  */
 export function Dock({
+  tourId,
   eyebrow,
   title,
   right,
@@ -21,6 +22,7 @@ export function Dock({
   defaultOpen = true,
   grow = false,
 }: {
+  tourId?: string;
   eyebrow: string;
   title: string;
   right?: React.ReactNode;
@@ -36,6 +38,7 @@ export function Dock({
 
   return (
     <div
+      data-tour={tourId}
       className={cn(
         "panel pointer-events-auto flex flex-col overflow-hidden",
         grow && open ? "min-h-0 flex-1" : "flex-none",

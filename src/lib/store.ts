@@ -32,6 +32,10 @@ const FOCUS: Record<string, [number, number]> = {
 };
 
 interface MeridianStore {
+  selectedScenarioKind: "hormuz" | "redsea" | "opec";
+  setSelectedScenarioKind: (kind: "hormuz" | "redsea" | "opec") => void;
+  tutorialOpen: boolean;
+  setTutorialOpen: (open: boolean) => void;
   scenario: Scenario;
   intensity: number;
   running: boolean;
@@ -90,6 +94,10 @@ interface MeridianStore {
 }
 
 export const useMeridian = create<MeridianStore>((set, get) => ({
+  selectedScenarioKind: "hormuz",
+  setSelectedScenarioKind: (selectedScenarioKind) => set({ selectedScenarioKind }),
+  tutorialOpen: false,
+  setTutorialOpen: (tutorialOpen) => set({ tutorialOpen, panelsHidden: false }),
   scenario: makeScenario("baseline", 0),
   intensity: 50,
   running: false,
@@ -154,15 +162,15 @@ export const useMeridian = create<MeridianStore>((set, get) => ({
       // committing supply measurably de-risks the picture
       riskIndex: Math.max(14, s.riskIndex - 5),
       headline: rec
-        ? `Cargo committed — ${rec.volumeMbbl} mbbl via ${rec.routeName}. National exposure falling.`
+        ? `Demo approval — ${rec.volumeMbbl} mbbl via ${rec.routeName}.`
         : s.headline,
     }));
     const left = get().recommendations.length - get().approvedIds.length;
-    toast.success(rec ? `Routed ${rec.volumeMbbl} mbbl — ${rec.routeName}` : "Cargo routed", {
+    toast.success(rec ? `Demo approval: ${rec.volumeMbbl} mbbl — ${rec.routeName}` : "Cargo routed", {
       description:
         left > 0
-          ? `Charter + compliance pack issued. ${left} reroute${left > 1 ? "s" : ""} still staged.`
-          : "All staged reroutes committed. Risk index easing.",
+          ? `No order sent. ${left} suggestion${left > 1 ? "s" : ""} remaining.`
+          : "All suggestions approved in this demo. No order sent.",
     });
   },
 
@@ -271,6 +279,7 @@ export const useMeridian = create<MeridianStore>((set, get) => ({
     const t0 = Date.now();
     const it = intensity ?? get().intensity;
     const scenario = makeScenario(kind, it);
+    set({ intensity: it, ...(kind === "hormuz" || kind === "redsea" || kind === "opec" ? { selectedScenarioKind: kind } : {}) });
     const disrupted = disruptedChokepoints(scenario);
 
     const focus = kind !== "baseline" ? FOCUS[kind] : undefined;

@@ -98,3 +98,11 @@ of the deck).
 | [**Priyadeep Jaiswal**](https://github.com/priyadeepjaiswal9c) | Owner; product concept, research, system design, implementation, and presentation |
 
 Priyadeep designed the decision model, integrated the data and interface, verified the scenarios, and owns the resulting work.
+
+## Interactive console tutorial
+
+Open the [guided console](https://meridian-five-phi.vercel.app/console?tutorial=1) for the six-step walkthrough, or click **Tutorial** in the console header. It highlights the actual controls, waits for a simulation and a demo approval, then compares the saved run with another intensity. Close it at any time to return to the signal feed.
+
+For a short interview demo: choose **Hormuz**, set **50%**, run, read **Cascade impact**, inspect the route cards, simulate one approval, then compare **30%** with **80%**. The tutorial explains each action in place.
+
+The impact calculations and route ranking use explicit formulas and preset checks. The agent sequence is scripted; optional Gemini adds a written summary. Approvals change browser state only and send no procurement orders. The tutorial calls out these boundaries, including the formula-based confidence score and fixed risk-index reduction.

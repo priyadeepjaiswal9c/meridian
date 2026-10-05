@@ -64,7 +64,7 @@ export function CascadePanel() {
 
   if (!cascade) {
     return (
-      <Dock eyebrow="Cascade impact" title="Downstream economic model">
+      <Dock tourId="impact" eyebrow="Cascade impact" title="Downstream economic model">
         <div className="flex flex-col items-center gap-2 px-4 py-8 text-center">
           <Activity size={20} className="text-text-faint" />
           <p className="max-w-[240px] text-[12.5px] leading-relaxed text-text-faint">
@@ -76,7 +76,7 @@ export function CascadePanel() {
   }
 
   return (
-    <Dock
+    <Dock tourId="impact"
       eyebrow="Cascade impact"
       title="Shock → price → refinery → GDP"
       right={

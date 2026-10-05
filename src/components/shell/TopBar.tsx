@@ -31,6 +31,7 @@ function Kpi({ label, children, className }: { label: string; children: React.Re
 
 export function TopBar() {
   const { brent, cascade, riskIndex, severity, running, liveData } = useMeridian();
+  const tutorialOpen = useMeridian((s) => s.tutorialOpen);
   const [clock, setClock] = useState("");
 
   useEffect(() => {
@@ -114,6 +115,7 @@ export function TopBar() {
             <div className="eyebrow">UTC</div>
             <div className="num font-mono text-[12px] text-text-dim">{clock || "—"}</div>
           </div>
+          <button onClick={() => useMeridian.getState().setTutorialOpen(!useMeridian.getState().tutorialOpen)} className="rounded-md border border-signal/40 px-3 py-2 text-[12px] font-semibold text-signal" aria-pressed={tutorialOpen}>Tutorial</button>
           <ConnectAI />
           <ThemeToggle />
         </div>
