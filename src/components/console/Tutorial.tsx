@@ -88,7 +88,6 @@ export function Tutorial() {
           </tbody></table>}
           {running && <p>Running the comparison…</p>}
           <p>To try a different location, choose Red Sea and run again. Route rankings may stay the same when the surviving routes and their relative costs do not change.</p>
-          <p>For your interview: “I change the disruption, inspect the estimated impact, then compare alternative supply routes. The estimates are driven by explicit assumptions.”</p>
         </>}
       </div>
       <div className="mt-auto flex items-center justify-between gap-2 border-t border-hairline pt-4">
